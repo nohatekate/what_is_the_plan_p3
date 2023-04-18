@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Find Your Group</h1>
+
+{% for group in groups %}
+<div>
+        <div>
+            <h3>{{ group.name }}</h3>
+        </div>
+</div>
+{% endfor %}
+
+{% endblock %}

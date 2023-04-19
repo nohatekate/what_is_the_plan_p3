@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Group
 
 # Create your views here.
@@ -23,3 +24,8 @@ def groups_index(request):
 def groups_detail(request, group_id):
     group = Group.objects.get(id=group_id)
     return render(request, 'groups/detail.html', { 'group': group})
+
+class GroupCreate(CreateView):
+    model = Group
+    fields = '__all__'
+    success_url = '/groups'

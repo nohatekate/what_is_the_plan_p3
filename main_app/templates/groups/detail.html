@@ -4,8 +4,9 @@
 <h1>Group Details</h1>
 
 <div class ="card">
-    <h3>{{ group.name }}</h3>
+    
     <div class="card-action">
+        <h3 class="group-name">{{ group.name }}</h3>
         <a href="{% url 'groups_update' group.id %}">Edit Group</a>
         <a href="{% url 'groups_delete' group.id %}">Delete Group</a>
     </div>

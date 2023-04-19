@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -56,3 +56,11 @@ class GroupCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user  
 
         return super().form_valid(form)
+    
+class GroupUpdate(UpdateView):
+    model = Group
+    fields = ['name']
+    
+class GroupDelete(DeleteView):
+    model = Group
+    success_url = '/groups'

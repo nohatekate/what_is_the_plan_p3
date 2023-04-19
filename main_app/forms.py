@@ -10,4 +10,4 @@ class CreateGroupForm(ModelForm):
 class IdeaForm(ModelForm):
     class Meta:
         model = Idea
-        fields = ['name', 'environment', 'estimated cost']
+        fields = ['name', 'environment', 'estimated_cost']

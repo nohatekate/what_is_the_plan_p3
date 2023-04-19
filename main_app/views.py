@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Group
 from .forms import CreateGroupForm
+from .forms import IdeaForm
 
 
 # Create your views here.
@@ -32,7 +33,8 @@ def groups_index(request):
 @login_required
 def groups_detail(request, group_id):
     group = Group.objects.get(id=group_id)
-    return render(request, 'groups/detail.html', { 'group': group})
+    idea_form = IdeaForm()
+    return render(request, 'groups/detail.html', { 'group': group, 'idea_form': idea_form})
 
 def signup(request):
     error_message = ''

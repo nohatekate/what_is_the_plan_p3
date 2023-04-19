@@ -36,6 +36,18 @@ def groups_detail(request, group_id):
     idea_form = IdeaForm()
     return render(request, 'groups/detail.html', { 'group': group, 'idea_form': idea_form})
 
+def add_idea(request, group_id):
+    form = IdeaForm(request.POST)
+    print("We made it to add_idea")
+    if form.is_valid():
+        print("we're check validity")
+        new_idea = form.save(commit=False)
+        print(group_id)
+        new_idea.group_id = group_id 
+        new_idea.save()
+        print("we're saved")
+    return redirect('detail', group_id=group_id)
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':

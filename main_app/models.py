@@ -17,10 +17,10 @@ class Group(models.Model):
 class Idea(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
-    estimated_time = models.IntegerField()
-    estimated_cost = models.IntegerField()
-    day_of_week = models.CharField(max_length=20)
-    environment = models.CharField(max_length=100)
+    estimated_time = models.IntegerField(default=0)
+    estimated_cost = models.IntegerField(default=0)
+    day_of_week = models.CharField(max_length=20, default=' ')
+    environment = models.CharField(max_length=100, default='inside or outside?')
 
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
 

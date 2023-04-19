@@ -6,3 +6,7 @@ class Idea(models.Model):
     description = models.TextField(),
     category = models.CharField(max_length=),
     selected_idea = models.BooleanField(),
+
+        # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # ideas = models.ForeignKey(Idea), 
+    # crew = models.ManyToManyField(user),

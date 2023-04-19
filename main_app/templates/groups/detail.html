@@ -3,8 +3,14 @@
 
 <h1>Group Details</h1>
 
-<div>
-    <h3>{{ group.name }}</h3>
+<div class ="card">
+    
+    <div class="card-action">
+        <h3 class="group-name">{{ group.name }}</h3>
+        <a href="{% url 'groups_update' group.id %}">Edit Group</a>
+        <a href="{% url 'groups_delete' group.id %}">Delete Group</a>
+    </div>
+
     <p>Eventually you'll be able to see and add ideas here!</p>
 </div>
 

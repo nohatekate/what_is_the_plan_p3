@@ -3,15 +3,35 @@
 
 <h1>Group Details</h1>
 
-<div class ="card">
-    
+<div class="card">
+
     <div class="card-action">
         <h3 class="group-name">{{ group.name }}</h3>
         <a href="{% url 'groups_update' group.id %}">Edit Group</a>
         <a href="{% url 'groups_delete' group.id %}">Delete Group</a>
     </div>
-
-    <p>Eventually you'll be able to see and add ideas here!</p>
 </div>
 
+<p class="black-text">Eventually you'll be able to see and add ideas here!</p>
+
+<div class="col s6">
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Environment</th>
+                <th>Estimated Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for idea in group.idea_set.all %}
+            <tr>
+                <td>{{idea.name}}</td>
+                <td>{{idea.environment}}</td>
+                <td>{{idea.estimated_cost}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

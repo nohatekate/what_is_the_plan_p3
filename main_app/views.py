@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+
 from .models import Group
+from .forms import CreateGroupForm
+
 
 # Create your views here.
 # groups = [
@@ -43,7 +46,7 @@ def signup(request):
 
 class GroupCreate(CreateView):
     model = Group
-    fields = '__all__'
+    fields = ['name']
 
     def form_valid(self, form):
         form.instance.user = self.request.user  

@@ -19,3 +19,7 @@ def groups_index(request):
     groups = Group.objects.all()
     # groups = Group.objects.filter(user=request.user)
     return render(request, 'groups/index.html', {'groups': groups})
+
+def groups_detail(request, group_id):
+    group = Group.objects.get(id=group_id)
+    return render(request, 'groups/detail.html', { 'group': group})

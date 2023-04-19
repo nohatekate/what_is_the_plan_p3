@@ -10,3 +10,9 @@ class Idea(models.Model):
         # user = models.ForeignKey(User, on_delete=models.CASCADE)
     # ideas = models.ForeignKey(Idea), 
     # crew = models.ManyToManyField(user),
+
+    Question on forms. When a user logs in and tries to create a group - I’m using the block of code for the form like this
+    <table>
+        {{ form.as_table }}
+     </table>
+It looks like it’s expecting the user field to be filled in, but there is no way to actually fill it in so now you can’t add a new group. I thought when we did this with cats it just 

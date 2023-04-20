@@ -1,0 +1,32 @@
+class User(models.Model):
+    pass
+
+class Idea(models.Model):
+    name = models.CharField(),
+    description = models.TextField(),
+    category = models.CharField(max_length=),
+    selected_idea = models.BooleanField(),
+
+        # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # ideas = models.ForeignKey(Idea), 
+    # crew = models.ManyToManyField(user),
+
+ 
+
+class IdeaUpdate(UpdateView):
+    pass
+
+
+path('groups/<int:group_id>/ideas/<int:pk>/edit'), views.IdeaUpdate.as_view(), name='idea_update'
+
+import idea 
+
+class IdeaDelete():
+print('kwargs', kwargs['pk'])
+        print('group.id', kwargs['group_id'])
+//return 
+
+ # def delete(self, request, id):
+    #     idea = Idea.objects.get(id=id)
+    #     idea.delete()
+    #   

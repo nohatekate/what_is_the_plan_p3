@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's The Plan?!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body class="teal lighten-4">
+    <header>
+        <nav class="teal darken-w">
+            <ul class="right">
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'index' %}">View All Groups</a>
+                </li>
+                <li><a href="{% url 'groups_create' %}">Add your Group</a></li>
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <div>© Katherine Sprague 2023</div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Find Your Group</h1>
+
+{% for group in groups %}
+<div class="card-panel">
+    <a href="{% url 'detail' group.id %}">
+        <div class="teal-text text-darken-2">
+            <h3>{{ group.name }}</h3>
+        </div>
+    </a>
+</div>
+{% endfor %}
+
+{% endblock %}

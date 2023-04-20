@@ -35,6 +35,7 @@
                 <td>{{idea.name}}</td>
                 <td>{{idea.environment}}</td>
                 <td>{{idea.estimated_cost}}</td>
+                <td><a href="{% url 'ideas_delete' group.id idea.id %}">Delete Idea</a></td>
             </tr>
             {% endfor %}
         </tbody>

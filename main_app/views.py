@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views import View
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Group
+from .models import Group, Idea
 from .forms import CreateGroupForm
 from .forms import IdeaForm
 
@@ -78,3 +80,9 @@ class GroupUpdate(UpdateView):
 class GroupDelete(DeleteView):
     model = Group
     success_url = '/groups'
+
+class IdeaDelete(View): 
+    def get(self, request, *args, **kwargs):
+        idea = Idea.objects.get(id=kwargs['pk'])
+        idea.delete()
+        return redirect('detail', group_id=kwargs['group_id'])

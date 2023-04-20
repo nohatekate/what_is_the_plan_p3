@@ -2,12 +2,19 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: darkcyan;
+    background-color: rgb(203, 227, 227);
     color: white;
+
+}
+
+nav {
+    padding: 0 30px;
+    
 }
 
 main {
     flex: 1 0 auto;
+    padding: 0 30px !important;
 }
 
 footer.page-footer {

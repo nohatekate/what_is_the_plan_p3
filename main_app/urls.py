@@ -8,5 +8,9 @@ urlpatterns = [
     path('groups/create/', views.GroupCreate.as_view(), name='groups_create'),
     path('groups/<int:pk>/update/', views.GroupUpdate.as_view(), name='groups_update'),
     path('groups/<int:pk>/delete/', views.GroupDelete.as_view(), name='groups_delete'),
+    path('groups/<int:group_id>/add_idea/', views.add_idea, name='add_idea'),
+
+    path('groups/<int:group_id>/ideas/<int:pk>/delete/', views.IdeaDelete.as_view(), name='ideas_delete'),
+
     path('accounts/signup/', views.signup, name='signup'),
 ]

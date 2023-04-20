@@ -21,6 +21,7 @@
             {{ idea_form.as_p }}
             <input type="submit" class="btn" value="Add Idea">
         </form>
+        
         <thead>
             <h4>Our Hangout Ideas!</h3>
             <tr>
@@ -29,6 +30,7 @@
                 <th>Estimated Cost</th>
             </tr>
         </thead>
+
         <tbody>
             {% for idea in group.idea_set.all %}
             <tr>

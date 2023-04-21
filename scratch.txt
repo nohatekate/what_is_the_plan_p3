@@ -30,3 +30,17 @@ print('kwargs', kwargs['pk'])
     #     idea = Idea.objects.get(id=id)
     #     idea.delete()
     #   
+
+       {% if user.id == request.user.id %}
+       
+class GroupDelete(LoginRequiredMixin, DeleteView):
+    print("delete class view")
+    model = Group
+    # success_url = reverse_lazy('/groups', request.user.id)
+
+    # def delete(self, request, *args, **kwargs):
+    #     print("trying to delete")
+    #     self.object = self.get_object()
+    #     if self.object.user == request.user:
+    #         self.object.delete()
+    #         return HttpResponseRedirect(self.get_success_url())

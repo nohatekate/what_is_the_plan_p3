@@ -40,8 +40,10 @@ def groups_detail(request, group_id):
 
 @login_required
 def add_idea(request, group_id):
+    print(request.POST)
     form = IdeaForm(request.POST)
     print("We made it to add_idea")
+    # print(form)
     if form.is_valid():
         print("we're check validity")
         new_idea = form.save(commit=False)

@@ -8,11 +8,15 @@ class Group(models.Model):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    
     def __str__(self):
         return self.name
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'group_id': self.id})
+    
+    class Meta:
+        ordering = ['name']
     
 class Idea(models.Model):
     name = models.CharField(max_length=100)
@@ -24,5 +28,8 @@ class Idea(models.Model):
 
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['name']
+        
     def __str__(self):
         return self.name

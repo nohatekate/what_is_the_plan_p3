@@ -38,6 +38,7 @@ def groups_detail(request, group_id):
     idea_form = IdeaForm()
     return render(request, 'groups/detail.html', { 'group': group, 'idea_form': idea_form})
 
+@login_required
 def add_idea(request, group_id):
     form = IdeaForm(request.POST)
     print("We made it to add_idea")
@@ -73,15 +74,15 @@ class GroupCreate(LoginRequiredMixin, CreateView):
 
         return super().form_valid(form)
     
-class GroupUpdate(UpdateView):
+class GroupUpdate(LoginRequiredMixin, UpdateView):
     model = Group
     fields = ['name']
     
-class GroupDelete(DeleteView):
+class GroupDelete(LoginRequiredMixin, DeleteView):
     model = Group
     success_url = '/groups'
 
-class IdeaDelete(View): 
+class IdeaDelete(LoginRequiredMixin, View): 
     def get(self, request, *args, **kwargs):
         idea = Idea.objects.get(id=kwargs['pk'])
         idea.delete()

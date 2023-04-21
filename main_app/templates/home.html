@@ -2,10 +2,12 @@
 {% block content %}
 
 
-    <div class="home-page center">
-        <h1>What is the plan?!</h1>
-        <p>Want to make plans with your crew?</p>
-        <h4 ><a href="{% url 'login' %}" class="teal-text text-darken-2">Click here to log in now!! </a></h4>
-        </div>
+<div class="home-page center">
+    <h1>What is the plan?!</h1>
+    <h6>Want to make plans with your crew?</h6>
+    <h4 class="white-text"><span><a href="{% url 'login' %}" class="teal-text text-darken-2">Log
+                In</a></span> or <span><a href="{% url 'signup' %}" class="teal-text text-darken-2">Sign
+                Up</a></span> Now!! </h4>
+</div>
 
 {% endblock %}

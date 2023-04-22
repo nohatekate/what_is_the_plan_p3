@@ -6,6 +6,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+import random
 
 from .models import Group, Idea
 from .forms import CreateGroupForm
@@ -36,22 +37,24 @@ def groups_index(request):
 def groups_detail(request, group_id):
     group = Group.objects.get(id=group_id)
     idea_form = IdeaForm()
-    return render(request, 'groups/detail.html', { 'group': group, 'idea_form': idea_form})
+    return render(request, 'groups/detail.html', { 'group': group, 'idea_form': idea_form })
 
 @login_required
 def add_idea(request, group_id):
-    print(request.POST)
     form = IdeaForm(request.POST)
-    print("We made it to add_idea")
-    # print(form)
     if form.is_valid():
-        print("we're check validity")
         new_idea = form.save(commit=False)
-        print(group_id)
         new_idea.group_id = group_id 
         new_idea.save()
-        print("we're saved")
     return redirect('detail', group_id=group_id)
+
+@login_required
+def choose_random_idea(request, group_id):
+    group = Group.objects.get(id=group_id)
+    ideas = Idea.objects.filter(group=group_id)
+    random_idea = random.choice(ideas)
+    idea_form = IdeaForm()
+    return render(request, 'groups/detail.html', { 'group': group, 'idea_form': idea_form, 'random_idea': random_idea })
 
 def signup(request):
     error_message = ''

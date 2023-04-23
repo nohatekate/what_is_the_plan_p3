@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import View
 from django.contrib.auth import login

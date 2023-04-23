@@ -13,4 +13,8 @@ urlpatterns = [
     path('groups/<int:group_id>/ideas/<int:pk>/delete/', views.IdeaDelete.as_view(), name='ideas_delete'),
 
     path('accounts/signup/', views.signup, name='signup'),
+
+    path('groups/<int:group_id>/choose_random_idea/', views.choose_random_idea, name='choose_random_idea'),
+
+    path('groups/<int:group_id>/add_photo/', views.add_photo, name='add_photo'),
 ]

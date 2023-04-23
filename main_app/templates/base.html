@@ -8,11 +8,16 @@
     <title>What's The Plan?!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script type = "text/javascript"  
+        src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
 </head>
 <body class="teal lighten-4">
-    <header>
-        <nav class="teal darken-w">
-            <ul class="right">
+    <nav class="teal darken-w">
+        <div class=" nav-wrapper teal darken-w">
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
                 {% if user.is_authenticated %}
                 <li>
                     <a href="{% url 'index' %}">View All Groups</a>
@@ -24,14 +29,32 @@
                     <li><a href="{% url 'login' %}">Log In</a></li>
                 {% endif %}
             </ul>
-        </nav>
-    </header>
+            <ul class="sidenav" id="mobile-demo">
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'index' %}">View All Groups</a>
+                </li>
+                <li><a href="{% url 'groups_create' %}">Add your Group</a></li>
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
     <main>
         {% block content %}
         {% endblock %}
     </main>
     <footer>
-        <div>© Katherine Sprague 2023</div>
+        <div class="right-align">© Katherine Sprague 2023</div>
     </footer>
+
+    <script>
+        $(document).ready(function(){
+    $('.sidenav').sidenav();
+    });
+    </script>
 </body>
 </html>

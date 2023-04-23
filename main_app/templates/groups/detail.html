@@ -1,27 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Group Details</h1>
+<!-- <h1>Group Details</h1> -->
 
-<div class="card">
+<div class="card center">
 
     <div class="card-action">
-        <h3 class="group-name">{{ group.name }}</h3>
+        <h1 class="group-name">{{ group.name }}</h1>
+        {% if user.id == group.user.id %}
         <a href="{% url 'groups_update' group.id %}">Edit Group</a>
         <a href="{% url 'groups_delete' group.id %}">Delete Group</a>
+        {% endif %}
     </div>
 </div>
 
 <div class="col s6">
     <table class="striped">
-        <form action="{% url 'add_idea' group.id %}" method="POST">
-            {% csrf_token %}
-            {{ idea_form.as_p }}
-            <input type="submit" class="btn" value="Add Idea">
-        </form>
-        
+
         <thead>
-            <h4>Our Hangout Ideas!</h3>
+            <h2 class="center">Our Hangout Ideas!</h2>
             <tr>
                 <th>Name</th>
                 <th>Environment</th>
@@ -33,12 +30,50 @@
             {% for idea in group.idea_set.all %}
             <tr>
                 <td>{{idea.name}}</td>
-                <td>{{idea.environment}}</td>
+                <td>{{idea.get_environment_display}}</td>
                 <td>{{idea.estimated_cost}}</td>
+
                 <td><a href="{% url 'ideas_delete' group.id idea.id %}">Delete Idea</a></td>
+
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    <div class="center">
+        <a class="btn" href="{% url 'choose_random_idea' group.id %}">Pick Your Plan at Random!</a>
+        {% if random_idea %}
+        <div class="card-panel">
+            
+            <h4 class="teal-text text-darken-2">🎉 {{random_idea.name}} 🎉</h4>
+            <h5 class="teal-text text-darken-2">Here's your plan that was randomly chosen for you.. Head out and have fun 🙃 </h5>
+        </div>
+        {% endif %}
+
+
+    </div>
+
+    <h3 class="center">What's your idea? Add it here!</h3>
+    <form action="{% url 'add_idea' group.id%}" method="POST">
+        {% csrf_token %}
+        {{ idea_form.as_p }}
+        <input type="submit" class="btn" value="Add Idea">
+    </form>
 </div>
+
+    {% for photo in group.photo_set.all %}
+    <img class="responsive-img card-panel" src="{{photo.url}}">
+    {% empty %}
+    <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+    {% endfor %}
+    <form action="{% url 'add_photo' group.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+        {% csrf_token %}
+        <input type="file" name="photo-file">
+        <br><br>
+        <button type="submit" class="btn">Upload Photo</button>
+    </form>
+
+<script>
+    const selectEl = document.querySelectorAll('select');
+    M.FormSelect.init(selectEl);
+</script>
 {% endblock %}

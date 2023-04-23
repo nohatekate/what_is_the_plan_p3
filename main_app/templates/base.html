@@ -11,12 +11,14 @@
     <script type = "text/javascript"  
         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
 </head>
 <body class="teal lighten-4">
     <nav class="teal darken-w">
-        <div class=" nav-wrapper teal darken-w">
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+        <div class="nav-wrapper teal darken-w">
+            <a href="/" class="brand-logo left">What is the plan?!</a>  
+            <a href=" " data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 {% if user.is_authenticated %}
                 <li>
@@ -47,7 +49,7 @@
         {% block content %}
         {% endblock %}
     </main>
-    <footer>
+    <footer class="teal lighten-3">
         <div class="right-align">© Katherine Sprague 2023</div>
     </footer>
 

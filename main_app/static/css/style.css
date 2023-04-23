@@ -3,7 +3,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background-color: rgb(203, 227, 227);
-    color: rgb(107, 106, 106);
+    color: rgb(73, 73, 73);
 
 }
 
@@ -12,12 +12,16 @@ nav {
     
 }
 
+p{
+    font-size: x-large !important;
+}
+
 main {
     flex: 1 0 auto;
     padding: 0 30px !important;
 }
 
-footer.page-footer {
+footer .page-footer {
     padding-top: 0;
     text-align: right;
 }

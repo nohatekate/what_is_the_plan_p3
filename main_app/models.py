@@ -37,3 +37,10 @@ class Idea(models.Model):
         
     def __str__(self):
         return f"{self.name}"
+    
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for group_id: {self.group_id} @{self.url}"

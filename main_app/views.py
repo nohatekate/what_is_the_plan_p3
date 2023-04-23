@@ -1,3 +1,6 @@
+import uuid
+import boto3
+import os
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import View
@@ -7,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import random
 
-from .models import Group, Idea
+from .models import Group, Idea, Photo
 from .forms import CreateGroupForm
 from .forms import IdeaForm
 
@@ -54,6 +57,31 @@ def choose_random_idea(request, group_id):
     random_idea = random.choice(ideas)
     idea_form = IdeaForm()
     return render(request, 'groups/detail.html', { 'group': group, 'idea_form': idea_form, 'random_idea': random_idea })
+
+@login_required
+def add_photo(request, group_id):
+    
+    # photo-file will be the "name" attribute on the <input type="file">
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        
+        s3 = boto3.client('s3')
+        # need a unique "key" for S3 / needs image file extension too
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # just in case something goes wrong
+        try:
+            
+            bucket = os.environ['S3_BUCKET']
+            s3.upload_fileobj(photo_file, bucket, key)
+            print("add photo view function")
+            # build the full url string
+            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            # we can assign to cat_id or cat (if you have a cat object)
+            Photo.objects.create(url=url, group_id=group_id)
+        except Exception as e:
+            print('An error occurred uploading file to S3')
+            print(e)
+    return redirect('detail', group_id=group_id) 
 
 def signup(request):
     error_message = ''

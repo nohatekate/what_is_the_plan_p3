@@ -15,4 +15,6 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name='signup'),
 
     path('groups/<int:group_id>/choose_random_idea/', views.choose_random_idea, name='choose_random_idea'),
+
+    path('groups/<int:group_id>/add_photo/', views.add_photo, name='add_photo'),
 ]

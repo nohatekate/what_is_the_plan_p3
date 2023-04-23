@@ -31,11 +31,12 @@ I introduce you to my fullstack web application, What Is The Plan?! By utilizing
 
 
 ## Getting Started
-Check out the live site here **[here](https://whatisourplan.herokuapp.com/)**!
-
+* Check out the live site here **[here](https://whatisourplan.herokuapp.com/)**!
+* [Pitch Deck](https://docs.google.com/presentation/d/1bUNAN-Cj-mLHfT0VkSIDrb-WXYLizGT1g9OSSGyLcZI/edit#slide=id.p)
+* [Trello Board Planning](https://trello.com/b/MMmcI1T1/whats-the-plan)
 ## Future Enhancements
 
-- As a user I want to be able to filter hangout ideas
+- As a user I want to be able to filter hangout ideas before choosing one
 - As a user I want to be able to edit an idea I have created
 - As a user I want to be able to save past hangouts
 - As a user I want comment on hangout

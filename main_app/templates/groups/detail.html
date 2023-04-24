@@ -40,9 +40,9 @@
         </tbody>
     </table>
     <div class="center">
-
+        {% if group.idea_set.all|length > 1%}
         <a class="btn" href="{% url 'choose_random_idea' group.id %}">Pick Your Plan at Random!</a>
-
+        {% endif %}
         {% if random_idea %}
         <div class="card-panel">
             

@@ -44,3 +44,16 @@ class GroupDelete(LoginRequiredMixin, DeleteView):
     #     if self.object.user == request.user:
     #         self.object.delete()
     #         return HttpResponseRedirect(self.get_success_url())
+
+
+# Create your views here.
+# groups = [
+#     {'name': 'Old Greg Goes Camping'},
+#     {'name': 'FamBam'},
+#     {'name': 'Blue Bubble Commune'},
+#     {'name': 'Most of My Friends'},
+#     {'name': 'Booze and Sweatpants'},
+#     {'name': 'The Shits'}
+# ]
+
+    # groups = Group.objects.filter(user=request.user)

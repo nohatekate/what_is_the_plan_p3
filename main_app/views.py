@@ -14,25 +14,12 @@ from .models import Group, Idea, Photo
 from .forms import CreateGroupForm
 from .forms import IdeaForm
 
-
-# Create your views here.
-# groups = [
-#     {'name': 'Old Greg Goes Camping'},
-#     {'name': 'FamBam'},
-#     {'name': 'Blue Bubble Commune'},
-#     {'name': 'Most of My Friends'},
-#     {'name': 'Booze and Sweatpants'},
-#     {'name': 'The Shits'}
-# ]
-
-
 def home(request):
     return render(request, 'home.html')
 
 @login_required
 def groups_index(request):
     groups = Group.objects.all()
-    # groups = Group.objects.filter(user=request.user)
     return render(request, 'groups/index.html', {'groups': groups})
 
 @login_required
@@ -60,23 +47,15 @@ def choose_random_idea(request, group_id):
 
 @login_required
 def add_photo(request, group_id):
-    
-    # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
-        
         s3 = boto3.client('s3')
-        # need a unique "key" for S3 / needs image file extension too
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
-        # just in case something goes wrong
         try:
-            
             bucket = os.environ['S3_BUCKET']
             s3.upload_fileobj(photo_file, bucket, key)
             print("add photo view function")
-            # build the full url string
             url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
-            # we can assign to cat_id or cat (if you have a cat object)
             Photo.objects.create(url=url, group_id=group_id)
         except Exception as e:
             print('An error occurred uploading file to S3')

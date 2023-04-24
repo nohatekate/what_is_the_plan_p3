@@ -1,9 +1,10 @@
 # What Is The Plan ?!
 
 ## Description
-    Have you ever suffered from analysis paralysis?! Have you ever wanted to hang out with your friends, but the inability to settle on a plan has left you at home on your couch alone? 
+Have you ever suffered from analysis paralysis?! Have you ever wanted to
+hang out with your friends, but the inability to settle on a plan has left you at home on your couch alone? 
 
-    I introduce you to my fullstack web application, What Is The Plan?! By utilizing this app a user can create groups with their friends and family. Within a group everyone can collect hangout ideas that they want to experience together. When they have time to hang out they can allow the app to randomly choose their plan for them! 
+I introduce you to my fullstack web application, What Is The Plan?! By utilizing this app a user can create groups with their friends and family. Within a group everyone can collect hangout ideas that they want to experience together. When they have time to hang out they can allow the app to randomly choose their plan for them! 
 
 # User Stories
 

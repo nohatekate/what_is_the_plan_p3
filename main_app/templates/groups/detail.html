@@ -40,7 +40,9 @@
         </tbody>
     </table>
     <div class="center">
+
         <a class="btn" href="{% url 'choose_random_idea' group.id %}">Pick Your Plan at Random!</a>
+
         {% if random_idea %}
         <div class="card-panel">
             
@@ -48,6 +50,7 @@
             <h5 class="teal-text text-darken-2">Here's your plan that was randomly chosen for you.. Head out and have fun 🙃 </h5>
         </div>
         {% endif %}
+        
 
 
     </div>
